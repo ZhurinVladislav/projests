@@ -5,7 +5,6 @@
 // End
 
 // gallery
-
 $(function(){
     const status = $('.arrow-wrapper__pagination');
     const slickElement = $('.gallery .slider');
@@ -82,10 +81,6 @@ $(function(){
     //     $(`[data-slick-index="${next + 2}"]`).removeClass('active');
     //     $(`[data-slick-index="${next}"]`).addClass('active');
     // });
-    
-
-
-
 });
 
 // rooms
@@ -148,6 +143,117 @@ $('.list__link-arrow-mob').on('click', function(){
     $this.parents('.content__list .list__item').find('.list-inner').toggleClass('active');
 });
 
+
+// Слайдер на странице 
+(function(){
+    if (document.querySelector('.room-slider')) {
+        //	количество элементов в нижнем слайдере
+        var productSliderCount = 3;
+        var productSliderX;
+        var productSliderY;
+        //	инициализируем верхний слайдер с большим фото
+        $(".room-slider__top").slick({
+            dots: false,
+            infinite: true,
+            speed: 500,
+            swipe: true,
+            autoplay: false,
+            waitForAnimate: false,
+            prevArrow: '<span class="arrow left" style=""><svg><use xlink:href="/app/img//icons/icons.svg#arrow-slider"></use></svg></span>',
+            nextArrow: '<span class="arrow right" style=""><svg><use xlink:href="/app/img//icons/icons.svg#arrow-slider"></use></svg></span>',
+            responsive: [
+                {
+                  breakpoint: 970,
+                  settings: {
+                    //prevArrow: '',
+                    //nextArrow: ''
+                  }
+                }
+            ]
+        });
+    
+        //	инициализируем нижний слайдер с маленькими фото
+        $(".room-slider__bottom").slick({
+            slidesToShow: productSliderCount,
+            dots: false,
+            infinite: false,
+            swipeToSlide: true,
+            speed: 500,
+            autoplay: false,
+            waitForAnimate: false,
+            slidesToShow: 4,
+            arrows: false,
+            responsive: [
+                {
+                  breakpoint: 970,
+                  settings: {
+                    slidesToShow: 3,
+                  }
+                },
+                {
+                    breakpoint: 800,
+                    settings: {
+                        slidesToShow: 2,
+                    }
+                }
+            ]
+        });        
+        
+        if(document.querySelector('.room-slider__bottom')){
+            //	добавляем первому картинке класс 'active' для отображения рамки
+            document.querySelector('.room-slider__bottom .slick-slide:first-child img').classList.add('active');
+
+            document.querySelector('.room-slider__bottom .slick-slide').addEventListener('click', (e) => {
+                e.preventDefault()
+            })
+        
+            //	листаем верхний слайдер при клике на элементы нижнего слайдера
+            var slide = document.querySelector(".room-slider__bottom");
+            
+            slide.onmousedown = function(e) {
+                //	если кликнули по картинке, а не по обёртке, записываем текущие координаты мыши
+                if (e.target.tagName == 'IMG') {
+                    productSliderX = e.screenX;
+                    productSliderY = e.screenY;
+                }
+            }
+            slide.onmouseup = function(e) {
+                if (e.target.tagName == 'IMG') {
+                //	если при клике курсор сдвинулся не больше, чем на 10px
+                    if (e.screenX < productSliderX + 10 &&
+                        e.screenX > productSliderX - 10 &&
+                        e.screenY < productSliderY + 10 &&
+                        e.screenY > productSliderY - 10) {
+                        //	листаем верхний слайдер до выбранного элемента
+                        $(".room-slider__top").slick('slickGoTo', e.target.closest('.slick-slide').getAttribute('data-slick-index'));
+                    }
+                }
+            }
+        
+            //	при листании верхнего слайдера
+            //	меняем активный элемент в нижнем
+            //	и, при необходимости, листаем нижний (синхронизируем слайдеры)
+            $(".room-slider__top").on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+                //	убираем и добавляем классы
+                document.querySelector('.room-slider__bottom img.active').classList.remove('active');
+                $('.room-slider__bottom .slick-slide[data-slick-index="'+nextSlide+'"] img').addClass('active');
+        
+                //	проверяем, будет ли виден нижний слайд после пролистывания верхнего, если нет, крутим вручную
+                if (document.querySelector('.room-slider__bottom .slick-slide[data-slick-index="'+nextSlide+'"]').classList.contains('slick-active') != true) {
+        
+                    if (currentSlide < nextSlide) {
+                        if ((nextSlide - (productSliderCount - 1)) > 0) {
+                            //	если листаем вправо, то нужно крутить на (количество слайдов минус один)
+                            $(".room-slider__bottom").slick('slickGoTo', nextSlide - (productSliderCount - 1));
+                        }
+                    } else {
+                        $(".room-slider__bottom").slick('slickGoTo', nextSlide);
+                    }
+                }
+            });
+        }
+    }
+}());
 
 // Стрелка прокрутка на вверх
 $(function(){
