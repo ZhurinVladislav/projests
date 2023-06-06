@@ -1,0 +1,212 @@
+.product
+  padding-top: 50px
+  padding-bottom: 50px
+  color: $color__1
+
+  &__list
+    display: flex
+    flex-wrap: wrap
+    margin: -5px
+    margin-bottom: 40px
+    width: 100%
+
+  &__item
+    width: 20%
+    padding: 5px
+
+    +medium
+      width: 25%
+
+    +small
+      width: 33%
+
+    +phone
+      width: 100%
+
+  &__item.active .product__item-link
+    background-color: $color__2
+    color: $color__3
+
+  &__item-link
+    display: flex
+    justify-content: center
+    align-items: center
+    padding: 15px 20px
+    width: 100%
+    max-width: 100%
+    min-height: 90px
+    background-color: $color__3
+
+    &:hover
+      background-color: $color__2
+
+  &__img
+    max-width: 60px
+    min-height: 50px
+
+  .content
+    display: flex
+    
+    +small
+      flex-wrap: wrap
+
+    &__left
+      margin-right: 40px
+      width: 20%
+
+      +small
+        margin-right: 0
+        margin-bottom: 40px
+        width: 100%
+
+
+    &__left-title
+      @include titleReset
+      margin-bottom: 20px
+      font-weight: 500
+      font-size: 32px
+      line-height: 1.2
+      color: $color__1
+      text-transform: uppercase
+
+    .list
+
+      &__item
+        position: relative
+        display: flex
+        width: 100%
+        min-height: 60px
+
+        +small
+          flex-direction: column
+
+        &:hover 
+          .list__link
+            +min(991px)
+              color: $color__3
+
+          .list__link-svg
+            +min(991px)
+              fill: $color__3
+
+          .list-inner
+            +min(991px)
+              display: flex
+
+          .list-inner.none
+            +min(991px)
+              display: none
+
+      .list__item.active .list__link
+        color: $color__3
+
+
+      &__link
+        position: relative
+        display: flex
+        align-items: center
+        padding: 15px 20px
+        width: 100%
+        max-width: 100%
+        min-height: 60px
+        border: 2px solid $color__1
+        transition: color .2s ease-in-out
+
+      &__link-img
+        margin-right: 10px
+        max-width: 30px
+        min-height: 40px
+
+      &__item:not(:last-child) .list__link
+        border-bottom-width: 0px
+
+      &__link-arrow
+        flex-shrink: 0
+        margin-left: auto
+        width: 16px
+        height: 10px
+        transform: rotate(270deg)
+        transition: fill .2s ease-in-out
+
+        +small
+          display: none
+
+      &__link-svg
+        fill: $color__1
+
+      &__link-arrow-mob
+        position: absolute
+        z-index: 120
+        right: 0
+        display: none
+        width: 72px
+        height: 74px
+        background-color: $color__2
+        border: 2px solid $color__1
+
+        +small
+          display: flex
+          justify-content: center
+          align-items: center
+
+      &__link-svg-mob
+        width: 20px
+        height: 20px
+        fill: $color__1
+
+      .active-mob
+        .list__link-svg-mob
+          transform: rotate(180deg)
+
+      .list-inner
+        position: absolute
+        // right: -248px
+        left: calc(100% - 2px)
+        z-index: 100
+        display: none
+        flex-direction: column
+        padding: 14px 0 20px 17px
+        width: 250px
+        border: 2px solid $color__1
+        background-color: $color__2
+
+        +small
+          position: static
+          width: 100%
+          border-bottom-width: 0px
+
+        &__item
+          max-width: max-content
+
+          &:not(:last-child)
+            margin-bottom: 20px
+
+        &__link
+          color: $color__1
+          transition: color .2s ease-in-out
+
+          &:hover
+            color: $color__3
+
+        &__item.active .list-inner__link
+          color: $color__3
+
+      .last
+        .list-inner
+          +small
+            border-top-width: 0
+            border-bottom-width: 2px
+
+    .list-inner.active
+      +small
+        display: flex
+
+    // .list-inner:hover .none
+    //   display: none
+
+    &__iframe
+      width: 80%
+      height: 700px
+
+      +small
+        width: 100%

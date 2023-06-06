@@ -1,0 +1,160 @@
+.home-page__products
+  padding-top: 160px
+  padding-bottom: 160px
+  color: $color__1
+  background-color: $color__2
+  background-image: url(../img/products/bc-img.jpg)
+  background-repeat: no-repeat
+  background-size: cover
+
+.products
+  padding-top: 160px
+  padding-bottom: 160px
+  color: $color__1
+  background-color: $color__2
+  background-image: url(../img/products/bc-img.jpg)
+  background-repeat: no-repeat
+  background-size: cover
+
+  +small
+    padding-top: 60px
+    padding-bottom: 60px
+
+  &__list
+    @include listReset
+    display: flex
+    flex-wrap: wrap
+    margin: -10px
+
+  &__item
+    width: 25%
+    padding: 10px
+
+    +max(1408px)
+      width: 33.33%
+
+    +small
+      width: 50%
+
+    +phone
+      width: 100%
+
+  &__link
+    position: relative
+    display: flex
+    flex-direction: column
+    min-height: auto
+    height: 100%
+    border: 3px solid $color__3
+    transition: color .2s ease-in-out, background-color .2s ease-in-out
+    overflow: hidden
+
+    +phone
+      max-width: 100%
+
+    &:hover
+      .products__img
+        transform: scale(1.1)
+
+      .products__title-wrapper
+        background-color: $color__2
+
+      .products__title-card
+        color: $color__3
+      
+
+  &__title-wrapper
+    z-index: 2
+    display: flex
+    justify-content: center
+    align-items: center
+    text-align: center
+    min-height: 75px
+    background-color: $color__3
+    transition: background-color .3s ease-in-out
+
+    +phone
+      padding: 0
+      min-height: 56px
+
+  &__title-card
+    @include titleReset
+    max-width: 242px
+    font-weight: 700
+    font-size: 18px
+    line-height: 1.2
+    color: $color__2
+    text-transform: uppercase
+    transition: color .3s ease-in-out
+
+    +phone
+      font-size: 16px
+
+  &__img
+    width: 100%
+    height: 100%
+    object-fit: cover
+    transition: transform .3s ease-in-out
+
+    +medium
+      max-height: 42vh
+
+    +phone
+      max-height: 30vh
+
+  .last-item
+    width: 75%
+
+    +max(1408px)
+      width: 100%
+
+    &__wrapper
+      position: relative
+      border: 3px solid $color__3
+
+      +small
+        display: flex
+        align-items: flex-end
+        height: 100%
+
+      +phone
+        min-height: 300px
+
+    &__img
+      position: absolute
+      bottom: 0
+      right: 0
+      width: 100%
+      height: 100%
+      object-fit: cover
+
+    &__content
+      position: relative
+      z-index: 2
+      padding: 124px 366px 103px 40px
+
+      +medium
+        padding: 50px
+
+      +phone
+        display: flex
+        flex-direction: column
+        padding: 30px
+
+    &__title
+      @include titleReset
+      margin-bottom: 40px
+      font-weight: 700
+      font-size: 60px
+      line-height: 1.2
+      color: $color__3
+      text-transform: uppercase
+
+      +max(1408px)
+        font-size: 40px
+
+      +small
+        font-size: 25px
+
+    &__link
+      padding: 25px 36px

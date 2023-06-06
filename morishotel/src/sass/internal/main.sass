@@ -1,0 +1,163 @@
+.main
+  padding-top: 40px
+  margin-bottom: 120px
+  &.gallery
+    .content
+      width: 100%
+
+  .content
+    h1
+      margin-bottom: 40px
+
+  .custom-gallery
+    img 
+      width: 100%
+      height: auto!important
+
+    &:hover
+      img
+        transform: scale(1)!important
+
+
+  .text-default
+    max-width: 85%
+    color: $color__2
+    +phone
+      min-width: 100%
+
+    h1
+      @include titleReset
+      font-weight: 700
+      font-size: 60px
+      line-height: 1.3
+      color: $color__2
+      text-transform: uppercase
+      +medium
+        font-size: 45px
+      +small
+        font-size: 40px
+      +phone
+        font-size: 30px
+
+    h2
+      @include titleReset
+      margin-bottom: 20px
+      font-weight: 700
+      font-size: 50px
+      line-height: 1.2
+      color: $color__2
+      text-transform: uppercase
+
+      +medium
+        font-size: 34px
+
+      +small
+        margin-bottom: 25px
+        font-size: 30px
+
+      +phone
+        margin-bottom: 15px
+        font-size: 26px
+
+    h3
+      @include titleReset
+      margin-bottom: 20px
+      font-size: 40px
+      font-weight: 300
+      line-height: 1.3
+      color: $color__2
+      text-transform: uppercase
+
+      +medium
+        font-size: 24px
+
+      +small
+        margin-bottom: 25px
+
+      +phone
+        margin-bottom: 15px
+
+    h4
+      @include titleReset
+      font-size: 40px
+      font-weight: 300
+      line-height: 1.3
+      color: $color__2
+      text-transform: uppercase
+
+      +medium
+        font-size: 24px
+
+      +small
+        margin-bottom: 25px
+
+      +phone
+        margin-bottom: 15px
+
+    p
+      @include textReset
+      margin-bottom: 16px
+
+    a
+      color: $color__4
+
+
+  .gallery-item
+    position: relative
+    z-index: 10
+    float: none
+    padding: 0px
+    border: 0px 
+    padding: 6px 4px
+    opacity: 1
+    width: calc(25% - 10px)
+    display: inline-block
+    vertical-align: top
+    font-size: 0
+    line-height: 0
+
+    a
+      text-decoration: none
+      display: inline-block
+      width: 100%
+      font-size: 0
+      line-height: 0
+      overflow: hidden
+        
+    img 
+      width: 100%
+      height: 300px
+      object-fit: cover
+      transition: 2s
+
+    &:hover
+      img
+        transform: scale(1.1)
+
+  +medium
+    .content
+      width: 90%
+
+      h1
+        margin-bottom: 30px
+
+  +small
+    margin-bottom: 80px
+
+    .content
+      width: 100%
+
+      h1
+        margin-bottom: 20px
+
+    .gallery-item
+      width: calc(50% - 8px)
+      height: 26vh
+
+      img 
+        height: 300px
+
+  +phone
+    .gallery-item
+      width: 100%
+      height: 32vh
