@@ -3,18 +3,38 @@ gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
 if (ScrollTrigger.isTouch !== 1) {
 
 	// ScrollSmoother.create({
-	// 	wrapper: 'body',
-	// 	content: 'body',
-	// 	smooth: 1.5,
-	// 	effects: true
+	// 	wrapper: '.content-wrapper',
+	// 	content: '.content-main',
+	// 	smooth: 1,
+	// 	// effects: true
 	// })
 
-	gsap.fromTo('.about', { opacity: 1 }, {
+	gsap.fromTo('.home-page__hero', { opacity: 1 }, {
 		opacity: 0,
 		scrollTrigger: {
-			trigger: '.about',
+			trigger: '.home-page__hero',
 			start: 'center',
 			end: '820',
+			scrub: true
+		}
+	})
+
+	gsap.fromTo('.parallax', { y: 0 }, {
+		y: 20,
+		scrollTrigger: {
+			trigger: '.parallax',
+			start: '-200',
+			end: '-100',
+			scrub: true
+		}
+	})
+
+	gsap.fromTo('.parallax-text', { y: 100 }, {
+		y: 0,
+		scrollTrigger: {
+			trigger: '.parallax-text',
+			start: '-200',
+			end: '-200',
 			scrub: true
 		}
 	})
