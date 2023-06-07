@@ -6,14 +6,17 @@
   background-repeat: no-repeat
   background-position: center
   background-size: cover
+
   +medium
     padding-top: 100px
+
   +small
     padding-top: 40px
     padding-bottom: 40px
 
   &__container
     display: flex
+
     +small
       flex-wrap: wrap-reverse
 
@@ -29,14 +32,17 @@
     background-position: bottom
     background-size: cover
     box-shadow: 0px 0px 100px rgba(191, 187, 185, 0.5)
+
     +large
       margin-right: 20px
       padding: 50px
       min-height: 500px
       box-shadow: 0px 0px 100px rgba(191, 187, 185, 0.5)
+
     +small
       margin-right: 0
       max-width: 100%
+
     +phone
       padding: 25px
 
@@ -47,11 +53,13 @@
     font-size: 16px
     line-height: 1.2
     color: $color__2
+
     +phone
       font-size: 14px
 
   &__descr.italic
     font-size: 20px
+
     +phone
       font-size: 16px
 
@@ -60,6 +68,7 @@
 
   .list-link
     display: flex
+
     +small
       flex-wrap: wrap
 
@@ -67,6 +76,7 @@
       width: 100%
       &:first-child
         margin-right: 40px
+
         +small
           margin-right: 0
           margin-bottom: 15px
@@ -87,6 +97,7 @@
       text-transform: uppercase
       color: $color__2
       transition: border-color .2s linear, color .2s linear
+
       +phone
         font-size: 14px
 
@@ -112,15 +123,18 @@
     z-index: 0
     max-width: 1180px
     min-height: 865px
+
     +large
       position: static
       min-height: 500px
+
     +small
       margin-bottom: 20px
       max-width: 100%
       width: 100%
       max-height: 50vh
       min-height: 50vh
+
     +phone
       max-height: 30vh
       min-height: 30vh
@@ -136,11 +150,13 @@
       font-size: 268px
       color: $color__3
       text-shadow: 0px 0px 100px rgba(191, 187, 185, 0.5)
+
       +large
         top: 0vh
         right: 5vh
         font-size: 81px
         color: $color__2
+
       +phone
         top: -1vh
         right: 2vh
@@ -157,11 +173,9 @@
 
     &__img-item.mob
       display: none
+
       +large
         display: flex
+
       +small
         max-width: 100%
-
-
-
-

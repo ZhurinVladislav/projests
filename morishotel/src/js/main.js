@@ -159,8 +159,8 @@ $('.list__link-arrow-mob').on('click', function(){
             swipe: true,
             autoplay: false,
             waitForAnimate: false,
-            prevArrow: '<span class="arrow left" style=""><svg><use xlink:href="/app/img//icons/icons.svg#arrow-slider"></use></svg></span>',
-            nextArrow: '<span class="arrow right" style=""><svg><use xlink:href="/app/img//icons/icons.svg#arrow-slider"></use></svg></span>',
+            prevArrow: '.room-slider__arrow-wrapper > .arrow-wrapper__left',
+            nextArrow: '.room-slider__arrow-wrapper > .arrow-wrapper__right',
             responsive: [
                 {
                   breakpoint: 970,

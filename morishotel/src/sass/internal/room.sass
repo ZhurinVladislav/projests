@@ -1,5 +1,4 @@
 .room
-  padding-top: 50px
   margin-bottom: 120px
 
   +small
@@ -7,6 +6,9 @@
 
   &__title
     margin-bottom: 20px
+
+    +phone
+      margin-bottom: 5px
 
 .top-content
   width: 100%
@@ -16,111 +18,134 @@
   +small
     flex-wrap: wrap
 
-.room-slider
-  display: flex
-  flex-direction: column
-  width: 40%
-  margin-right: 100px
-
-  +small
-    width: 100%
-    margin-right: 0
-    margin-bottom: 20px
-
-  &__top
+  .room-slider
     position: relative
-    margin: 0 -4px
-    padding-bottom: 20px
-    height: 100%
-    overflow: hidden
-    max-height: 520px
-
-    +phone
-      padding: 0
-
-  .slick-list
-    height: 100%
-
-  .slick-track
-    height: 100%
-
-  &__slide-link
-    height: 100%
-    max-height: 491px
-
-  &__img
-    width: 100%
-    height: 100%
-    padding: 0 4px
-    min-height: 491px
-    max-height: 491px
-    object-fit: cover
-
-    +phone
-      min-height: 300px
-
-  &__bottom
-    margin: 0 -10px
-
-    +phone
-      display: none
-
-  .room-slider__slide-item
-    display: inline-block
-    // max-height: 166px
-    padding: 0 10px
-
-  &__img-wrappe
-    // min-height: 166px
-
-  &__img-bottom
-    cursor: pointer
-    min-height: 110px
-    max-height: 110px
-    width: 100%
-    object-fit: cover
-    height: 100%
-    // min-height: 166px
-
-  &__descr
-    // padding: 25px
-    width: 60%
+    display: flex
+    flex-direction: column
+    width: 40%
+    margin-right: 60px
 
     +medium
+      margin-right: 40px
+
+    +small
       width: 100%
+      margin-right: 0
+      margin-bottom: 20px
 
-    +phone
-      margin-top: 0
+    &__top
+      position: relative
+      margin: 0 -4px
+      padding-bottom: 20px
+      height: 100%
+      overflow: hidden
 
-  &__list
-    margin-bottom: 49px
+      +phone
+        padding: 0
 
-  &__item
+    .arrow-wrapper
+      position: absolute
+      right: 0
+      top: 37%
+      bottom: 55%
+      z-index: 100
+      display: flex
+      justify-content: space-between
+      align-items: center
+      width: 100%
+      max-width: 100%
 
-    &:not(:last-child)
-      margin-bottom: 25px
+      +phone
+        top: 50%
+        bottom: 50%
 
-  &__title
-    @include textReset
-    margin-bottom: 5px
-    font-weight: 700
-    font-size: 18px
-    line-height: 1.2
-    color: $color__5
-    text-transform: uppercase
+      .svg-reset
+        &:hover
+          stroke: $color__1
+
+      .arrow
+        padding: 5px
+        background-color: rgba($color__4, .5)
+        transition: background-color  .2s linear
+        
+        &:hover
+          background-color: rgba($color__4, 1) 
+          .svg-reset
+              stroke: $color__1
+
+      &__left
+        margin-right: 20px
+
+    .slick-list
+      height: 100%
+
+    .slick-track
+      height: 100%
+
+    &__slide-link
+      height: 100%
+      max-height: 450px
+
+      +phone
+        max-height: 34vh
+
+    &__img
+      width: 100%
+      height: 100%
+      object-fit: cover
+
+      +phone
+        min-height: 300px
+
+    &__bottom
+      margin: 0 -10px
+
+      +phone
+        display: none
+
+    &__slide-item
+      display: inline-block
+      padding: 0 10px
+
+    &__img-bottom
+      cursor: pointer
+      min-height: 110px
+      max-height: 110px
+      width: 100%
+      object-fit: cover
+      height: 100%
+
+    &__descr
+      width: 60%
+
+      +medium
+        width: 100%
+        
+      +phone
+        margin-top: 0
+
+    &__list
+      margin-bottom: 49px
+
+    &__item
+      &:not(:last-child)
+        margin-bottom: 25px
+
+    &__title
+      @include textReset
+      margin-bottom: 5px
+      font-weight: 700
+      font-size: 18px
+      line-height: 1.2
+      color: $color__5
+      text-transform: uppercase
 
   &__text
-    @include textReset
-    font-weight: 600
-    font-size: 18px
-    line-height: 1.2
-    color: $color__2
+    p
+      @include textReset
+      &:not(:last-child)
+        margin-bottom: 15px
 
   &__btn
-    // padding: 16px 17px
-    // margin-right: 10px
-    // max-width: 233px
-    // min-height: 51px
-    // font-weight: 700
-    // font-size: 15px
-    // line-height: 1.2
+    padding: 25px 40px
+    font-size: 16px

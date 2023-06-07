@@ -6,6 +6,7 @@
   background-repeat: no-repeat
   background-position: center
   background-size: cover
+
   +small
     padding-top: 40px
     padding-bottom: 80px
@@ -13,6 +14,7 @@
   .gallery
     position: relative
     margin-bottom: 200px
+
     +small
       margin-bottom: 80px
 
@@ -22,12 +24,14 @@
     .slider-wrapper
       position: relative
       padding-left: 115px
+
       +max(1438px)
         padding-left: 0
 
       .slick-list
         overflow: inherit
         height: 580px
+
         +small
           height: 340px
 
@@ -46,6 +50,7 @@
           &.active
             width: 580px
             height: 580px
+
             +small
               width: 340px
               height: 340px
@@ -70,6 +75,7 @@
           background: linear-gradient(180deg, rgba(245, 243, 242, 0) 0%, rgba(245, 243, 242, 0.9) 56.77%)
           opacity: 0
           transition: opacity .6s linear
+
           +small
             padding: 20px
 
@@ -80,6 +86,7 @@
           font-size: 20px
           letter-spacing: .06em
           text-transform: uppercase
+
           +small
             font-size: 14px
 
@@ -92,9 +99,11 @@
         align-items: center
         width: 100%
         max-width: 580px
+
         +max(1438px)
           right: 66px
           max-width: 321px
+
         +phone
           right: auto
           max-width: 100%
@@ -131,10 +140,12 @@
       font-size: 268px
       color: $color__3
       text-shadow: 0px 0px 100px rgba(191, 187, 185, 0.5)
+
       +medium
         top: -2%
         right: 1%
         font-size: 100px
+
       +small
         display: none
 
@@ -143,6 +154,7 @@
 
     &__container
       display: flex
+
       +small
         flex-wrap: wrap
 
@@ -150,8 +162,10 @@
       width: 40%
       margin-right: 20px
       max-width: 580px
+
       +medium
         width: 50%
+
       +small
         width: 100%
         max-width: 100%
@@ -165,14 +179,17 @@
       &__descr.italic
         margin-bottom: 50px
         font-size: 20px
+
         +small
           margin-bottom: 20px
+
         +phone
           font-size: 16px
 
       &__wrap-text
         display: flex
         flex-direction: column
+
         +small
           flex-direction: row
           flex-wrap: wrap-reverse
@@ -182,6 +199,7 @@
         flex-direction: column
         margin-bottom: 50px
         border-left: 1px solid $color__4
+
         +phone
           flex-direction: row
           flex-wrap: wrap
@@ -198,10 +216,12 @@
           border-left: 2px solid transparent
           border-bottom: 2px solid transparent
           transition: color .2s linear, border-color .2s linear
+
           +phone
             padding: 10px 10px 5px 10px
             font-size: 14px
             min-height: 50px
+
           &:hover
             color: $color__4
             border-left-color: $color__4
@@ -209,6 +229,7 @@
         &__btn.active
           color: $color__4
           border-left-color: $color__4
+
           +phone
             border-left-color: $color__0
             border-bottom-color: $color__4
@@ -276,8 +297,10 @@
 
       .text
         padding: 0 60px 60px 60px
+
         +medium
           padding: 0 40px 40px 40px
+
         +phone
           padding: 0 20px 20px 20px
 
@@ -286,6 +309,7 @@
           font-weight: 700
           font-size: 40px
           text-transform: uppercase
+
           +phone
             font-size: 25px
 
@@ -296,6 +320,7 @@
           font-style: italic
           font-weight: 400
           font-size: 20px
+
           +phone
             margin-bottom: 15px
             font-size: 18px
@@ -348,9 +373,11 @@
       font-size: 268px
       color: $color__3
       text-shadow: 0px 0px 100px rgba(191, 187, 185, 0.5)
+
       +medium
         top: -2%
         right: 1%
         font-size: 100px
+        
       +small
         display: none

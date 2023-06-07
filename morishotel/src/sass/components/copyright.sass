@@ -21,11 +21,13 @@
   &__list
     display: flex
     text-align: center
+
     +small
       justify-content: center
       flex-wrap: wrap
 
   &__item
+
     +small
       margin-bottom: 10px
       width: 100%
@@ -36,6 +38,7 @@
         margin-bottom: 10px
       
     &:last-child
+
       +small
         margin-bottom: 0
 
@@ -46,6 +49,7 @@
 
   &__link
     transition: color .2s linear
+    
     &:hover
       color: $color__2
       .copyright__svg

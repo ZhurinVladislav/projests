@@ -94,6 +94,7 @@ input[type='number']
   margin: 0 auto
   padding-left: 25px
   padding-right: 25px
+
   +phone
     padding: 0 10px
 
@@ -125,10 +126,13 @@ input[type='number']
   line-height: 1.2
   color: $color__2
   text-transform: uppercase
+
   +medium
     font-size: 45px
+
   +small
     font-size: 40px
+
   +phone
     font-size: 23px
 
@@ -141,11 +145,14 @@ input[type='number']
   line-height: 1.2
   color: $color__2
   text-transform: uppercase
+
   +medium
     font-size: 34px
+    
   +small
     margin-bottom: 25px
     font-size: 30px
+
   +phone
     margin-bottom: 15px
 
@@ -266,6 +273,7 @@ input[type='number']
     margin-bottom: 0
 
   &.novalid
+
     input
       border: 1px solid red
 
@@ -392,6 +400,7 @@ input[type='number']
   font-size: 16px
   line-height: 1.8
   color: $color__2
+
   +medium
     font-size: 14px
 
@@ -401,8 +410,10 @@ input[type='number']
   p
     @include textReset
     margin-bottom: 36px
+
     &:first-child
       margin-top: 0
+
     &:last-child
       margin-bottom: 0
 
@@ -444,7 +455,16 @@ input[type='number']
 
     li:not(:last-child)
       margin-bottom: 10px
-            
+  
+  blockquote
+    margin: 0
+    margin-bottom: 20px
+    padding: 20px 10px 20px 20px
+    background: rgba($color__4, .3)
+    border-left: 5px solid $color__4
+    ul
+      margin-bottom: 0
+
   h1
     @include textReset
     display: block
@@ -454,10 +474,13 @@ input[type='number']
     font-weight: 600
     line-height: 1.2
     color: $color__2
+
     +medium
       font-size: 50px
+
     +small
       font-size: 40px
+
     +phone
       font-size: 36px
 
@@ -470,13 +493,15 @@ input[type='number']
     font-weight: 600
     line-height: 1.2
     color: $color__2
+
     +medium
       font-size: 34px
+
     +small
       font-size: 30px
+
     +phone
       font-size: 26px
-
 
   h3
     @include textReset
@@ -487,7 +512,6 @@ input[type='number']
     font-weight: 600
     line-height: 1.2
     color: $color__2
-
 
   table
     width: 100%
@@ -517,11 +541,9 @@ input[type='number']
         td
           font-weight: 700
 
-
     th
       padding: 10px
       border: 1px solid $color__3
-
 
     td
       border: 1px solid $color__3
@@ -564,10 +586,6 @@ input[type='number']
 
 // Слайдер
 .arrow
-  // position: absolute
-  // z-index: 4
-  // bottom: 0
-  // right: 0
   padding: 10px
   display: flex
   justify-content: center
@@ -575,14 +593,12 @@ input[type='number']
   width: 41px
   height: 41px
   cursor: pointer
-  // border: 1px solid red
   fill: $color__1
   stroke: $color__5
   transition: stroke .2s linear
 
   &:hover
     stroke: $color__4
-    // background-color: $color__3
 
   &__left-svg
     transform: rotate(180deg) 
@@ -640,7 +656,6 @@ input[type='number']
   min-height: 180px
 
   +medium
-    // right: 2vh
     bottom: 9vh
 
   +phone
