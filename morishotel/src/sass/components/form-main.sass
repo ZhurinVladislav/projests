@@ -31,11 +31,19 @@
       max-width: 400px
       min-height: 80px
       background-color: rgba($color__4, 0.3)
+      border: 1px solid $color__0
       font-weight: 600
       font-size: 16px
       line-height: 1.2
       letter-spacing: 0.06em
       text-transform: uppercase
+      transition: border-color .2s linear
+
+      &:hover
+        border-color: $color__2
+
+      &:focus
+        border-color: $color__2
 
       +phone
         margin-right: 0
@@ -61,14 +69,15 @@
       padding: 28px 43px
       border-color: $color__4
       color: $color__4
-      transition: background-color .2s linear, color .2s linear
+      transition: border-color .2s linear, color .2s linear
       
       +phone
         padding: 14px 43px
 
       &:hover
-        background-color: $color__4
-        color: $color__1
+        background-color: $color__0
+        border-color: $color__2
+        color: $color__2
 
     &__descr
       @include textReset

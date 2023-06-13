@@ -1,14 +1,14 @@
 .form-success
-	width: 912px
-	background-color: $color__2
-	box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2)
+	display: none
 	padding: 50px 40px
 	width: 534px
-	display: none
-	font-size: 24px
-	color: $color__1
-	font-weight: 600
+	background-color: $color__2
+	font-family: $font-family__2
 	text-align: center
+	font-weight: 600
+	font-size: 50px
+	color: $color__1
+	box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2)
 
 	&.active
 		display: block
@@ -17,3 +17,13 @@
 		padding: 40px 16px
 		width: 100%
 		font-size: 18px
+
+	.form-success__descr
+		@include textReset
+		margin-bottom: 20px
+		+phone
+			font-size: 30px
+
+	.form-success__descr.last
+		font-size: 24px
+		margin: 0

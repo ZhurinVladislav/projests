@@ -14,9 +14,8 @@ $(function(){
     });
 
     $('.gallery .slider').slick({
-        //lazyLoad: "ondemand",
-        //centerMode: true,
-        //initialSlide: 2,
+        useTransform: true,
+        lazyLoad: "ondemand",
         infinite: true,
         speed: 600,
         slidesToShow: 1,
@@ -37,7 +36,7 @@ $(function(){
     });
     // let firstSlide = $(`[data-slick-index="2"]`);
     // firstSlide.addClass('active')
-    if( window.innerWidth >= 1438 ){
+    if(window.innerWidth >= 1438){
         let firstSlide = $(`[data-slick-index="2"]`);
         firstSlide.addClass('active')
     } else if (window.innerWidth >= 700) {
@@ -52,6 +51,22 @@ $(function(){
         $('.gallery .slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
             let current = currentSlide + 2;
             let next = nextSlide + 2;
+
+            // console.log(slick.slideCount);
+
+            let sumSlide = currentSlide + 1;
+
+            let slideActive = $(`[data-slick-index="${next}"]`)
+
+            // console.log($(`[data-slick-index="${next + 1}"]`));
+
+            if (sumSlide >= slick.slideCount) {
+                // slideActive.addClass('transformSlider');
+                console.log(nextSlide);
+            }
+
+            // console.log(currentSlide);
+
             $(`[data-slick-index="${current}"]`).removeClass('active');
             $(`[data-slick-index="${next + 2}"]`).removeClass('active');
             $(`[data-slick-index="${next}"]`).addClass('active');
@@ -96,10 +111,13 @@ $(function(){
         cssEase: "linear",
         prevArrow: false,
         nextArrow: false,
+        // variableWidth: true,
+        // variableHeight: false,
     });
 
     $('.rooms .content-right').slick({
         dots: false,
+        adaptiveHeight: true,
         infinite: false,
         speed: 600,
         slidesToShow: 1,
@@ -107,6 +125,27 @@ $(function(){
         swipe: false,
         fade: true,
         arrows: false,
+    });
+    
+    $(".room__list .slider-wrapper .slider").slick({
+        centerMode: false,
+        dots: false,
+        infinite: true,
+        swipeToSlide: true,
+        speed: 600,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: false,
+        prevArrow: '<button class="arrow-wrapper__left arrow"><svg class="arrow__left-svg svg-reset"><use xlink:href="/app/img/icons/icons.svg#arrow-slider"></use></svg></button>',
+        nextArrow: '<button class="arrow-wrapper__right arrow"><svg class="arrow__right-svg svg-reset"><use xlink:href="/app/img/icons/icons.svg#arrow-slider"></use></svg></button>'
+    });
+
+    // Подключаем всплывающую галерею
+    $('.room__list .slider-wrapper .slider').lightGallery({
+        thumbnail: false,
+        share: false,
+        selector: '.slick-slide:not(.slick-cloned)',
+        getCaptionFromTitleOrAlt: false
     });
 
     // Табы
@@ -143,118 +182,6 @@ $('.list__link-arrow-mob').on('click', function(){
     $this.parents('.content__list .list__item').find('.list-inner').toggleClass('active');
 });
 
-
-// Слайдер на странице 
-(function(){
-    if (document.querySelector('.room-slider')) {
-        //	количество элементов в нижнем слайдере
-        var productSliderCount = 3;
-        var productSliderX;
-        var productSliderY;
-        //	инициализируем верхний слайдер с большим фото
-        $(".room-slider__top").slick({
-            dots: false,
-            infinite: true,
-            speed: 500,
-            swipe: true,
-            autoplay: false,
-            waitForAnimate: false,
-            prevArrow: '.room-slider__arrow-wrapper > .arrow-wrapper__left',
-            nextArrow: '.room-slider__arrow-wrapper > .arrow-wrapper__right',
-            responsive: [
-                {
-                  breakpoint: 970,
-                  settings: {
-                    //prevArrow: '',
-                    //nextArrow: ''
-                  }
-                }
-            ]
-        });
-    
-        //	инициализируем нижний слайдер с маленькими фото
-        $(".room-slider__bottom").slick({
-            slidesToShow: productSliderCount,
-            dots: false,
-            infinite: false,
-            swipeToSlide: true,
-            speed: 500,
-            autoplay: false,
-            waitForAnimate: false,
-            slidesToShow: 4,
-            arrows: false,
-            responsive: [
-                {
-                  breakpoint: 970,
-                  settings: {
-                    slidesToShow: 3,
-                  }
-                },
-                {
-                    breakpoint: 800,
-                    settings: {
-                        slidesToShow: 2,
-                    }
-                }
-            ]
-        });        
-        
-        if(document.querySelector('.room-slider__bottom')){
-            //	добавляем первому картинке класс 'active' для отображения рамки
-            document.querySelector('.room-slider__bottom .slick-slide:first-child img').classList.add('active');
-
-            document.querySelector('.room-slider__bottom .slick-slide').addEventListener('click', (e) => {
-                e.preventDefault()
-            })
-        
-            //	листаем верхний слайдер при клике на элементы нижнего слайдера
-            var slide = document.querySelector(".room-slider__bottom");
-            
-            slide.onmousedown = function(e) {
-                //	если кликнули по картинке, а не по обёртке, записываем текущие координаты мыши
-                if (e.target.tagName == 'IMG') {
-                    productSliderX = e.screenX;
-                    productSliderY = e.screenY;
-                }
-            }
-            slide.onmouseup = function(e) {
-                if (e.target.tagName == 'IMG') {
-                //	если при клике курсор сдвинулся не больше, чем на 10px
-                    if (e.screenX < productSliderX + 10 &&
-                        e.screenX > productSliderX - 10 &&
-                        e.screenY < productSliderY + 10 &&
-                        e.screenY > productSliderY - 10) {
-                        //	листаем верхний слайдер до выбранного элемента
-                        $(".room-slider__top").slick('slickGoTo', e.target.closest('.slick-slide').getAttribute('data-slick-index'));
-                    }
-                }
-            }
-        
-            //	при листании верхнего слайдера
-            //	меняем активный элемент в нижнем
-            //	и, при необходимости, листаем нижний (синхронизируем слайдеры)
-            $(".room-slider__top").on('beforeChange', function(event, slick, currentSlide, nextSlide) {
-                //	убираем и добавляем классы
-                document.querySelector('.room-slider__bottom img.active').classList.remove('active');
-                $('.room-slider__bottom .slick-slide[data-slick-index="'+nextSlide+'"] img').addClass('active');
-        
-                //	проверяем, будет ли виден нижний слайд после пролистывания верхнего, если нет, крутим вручную
-                if (document.querySelector('.room-slider__bottom .slick-slide[data-slick-index="'+nextSlide+'"]').classList.contains('slick-active') != true) {
-        
-                    if (currentSlide < nextSlide) {
-                        if ((nextSlide - (productSliderCount - 1)) > 0) {
-                            //	если листаем вправо, то нужно крутить на (количество слайдов минус один)
-                            $(".room-slider__bottom").slick('slickGoTo', nextSlide - (productSliderCount - 1));
-                        }
-                    } else {
-                        $(".room-slider__bottom").slick('slickGoTo', nextSlide);
-                    }
-                }
-            });
-        }
-    }
-}());
-
 // Стрелка прокрутка на вверх
 $(function(){
     //Стрелка прокрутка на вверх
@@ -266,24 +193,9 @@ $(function(){
         };
     })
     $('.scroll-top').click(function(){
-        $("html, body").animate({scrollTop: 0}, 1000);
+        $("html, body").animate({scrollTop: 0}, 60);
         return false;
     });
-});
-
-// Скрывем всплывающие меню, если не li
-$(function(){
-    let list = Array.from($('.list-inner'));
-
-    for (let i = 0; i < list.length; i++) {
-        if (list[i].firstElementChild === null) {
-            list[i].className = 'list__inner list-inner none'
-        }
-    }
-
-    // Удаление стрелки
-    let none = $('.none')
-    none.prev().prev().find('.list__link-arrow').css('display', 'none')
 });
 
 // Мобильное меню
@@ -353,14 +265,6 @@ $('.main').lightGallery({
   getCaptionFromTitleOrAlt: false
 });
 
-/// Подключаем всплывающую галерею на главной странице
-// $('.gallery').lightGallery({
-//     thumbnail: false,
-//     share: false,
-//     selector: '.slider__slide a',
-//     getCaptionFromTitleOrAlt: false
-//   });
-  
 
 //overlay
 $(function(){
@@ -448,13 +352,4 @@ $(function(){
           $(this).removeClass('focus')
       }
   })
-}());
-
-
-// Блок с контактной информацией
-(function(){
-    $('.map__toggle').on('click', function(){
-        $('.map__content').toggleClass('transform');
-        $('.map__toggle').toggleClass('transform-arrow');
-    })
 }());

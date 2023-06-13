@@ -1,70 +1,178 @@
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
+gsap.registerPlugin(ScrollTrigger, SmoothScroll)
 
 if (ScrollTrigger.isTouch !== 1) {
 
-	// ScrollSmoother.create({
-	// 	wrapper: '.content-wrapper',
-	// 	content: '.content-main',
-	// 	smooth: 1,
-	// 	// effects: true
-	// })
+	SmoothScroll({
+			// Время скролла 400 = 0.4 секунды
+			animationTime    : 800,
+			// Размер шага в пикселях 
+			stepSize         : 50,
 
-	gsap.fromTo('.home-page__hero', { opacity: 1 }, {
-		opacity: 0,
-		scrollTrigger: {
-			trigger: '.home-page__hero',
-			start: 'center',
-			end: '820',
-			scrub: true
-		}
+			// Дополнительные настройки:
+			
+			// Ускорение 
+			accelerationDelta : 30,  
+			// Максимальное ускорение
+			accelerationMax   : 2,   
+
+			// Поддержка клавиатуры
+			keyboardSupport   : true,  
+			// Шаг скролла стрелками на клавиатуре в пикселях
+			arrowScroll       : 50,
+
+			// Pulse (less tweakable)
+			// ratio of "tail" to "acceleration"
+			pulseAlgorithm   : true,
+			pulseScale       : 4,
+			pulseNormalize   : 1,
+
+			// Поддержка тачпада
+			touchpadSupport   : true,
 	})
 
-	gsap.fromTo('.parallax', { y: 0 }, {
+	gsap.fromTo('.home-page__hero .content', { y: 0 }, {
 		y: 20,
 		scrollTrigger: {
-			trigger: '.parallax',
+			trigger: '.home-page__hero .content',
 			start: '-200',
-			end: '-100',
+			end: '100',
 			scrub: true
 		}
 	})
 
-	gsap.fromTo('.parallax-text', { y: 100 }, {
-		y: 0,
+	// gsap.fromTo('.home-page__hero .hero__list', { y: 0 }, {
+	// 	y: 30,
+	// 	scrollTrigger: {
+	// 		trigger: '.home-page__hero .content',
+	// 		start: '-200',
+	// 		end: '100',
+	// 		scrub: true
+	// 	}
+	// })
+
+	// gsap.fromTo('.home-page__about .img-wrapper__img-number', { y: 0 }, {
+	// 	y: 50,
+	// 	scrollTrigger: {
+	// 		trigger: '.img-wrapper__img-number',
+	// 		start: '-200',
+	// 		end: '100',
+	// 		scrub: true
+	// 	}
+	// })
+
+	gsap.fromTo('.home-page__about .about__content', { y: 0 }, {
+		y: -40,
 		scrollTrigger: {
-			trigger: '.parallax-text',
-			start: '-200',
-			end: '-200',
+			trigger: '.about__content',
+			start: '-150',
+			end: '100',
 			scrub: true
 		}
 	})
 
-	// let itemsL = gsap.utils.toArray('.gallery__left .gallery__item')
+	gsap.fromTo('.home-page__about .img-wrapper__img-item', { y: 0 }, {
+		y: 20,
+		scrollTrigger: {
+			trigger: '.img-wrapper__img-item',
+			start: '-150',
+			end: '100',
+			duration: .2,
+			scrub: true
+		}
+	})
 
-	// itemsL.forEach(item => {
-	// 	gsap.fromTo(item, { opacity: 0, x: -50 }, {
-	// 		opacity: 1, x: 0,
-	// 		scrollTrigger: {
-	// 			trigger: item,
-	// 			start: '-850',
-	// 			end: '-100',
-	// 			scrub: true
-	// 		}
-	// 	})
+	gsap.fromTo('.home-page__main-gallery .gallery__number', { y: 0 }, {
+		y: 50,
+		scrollTrigger: {
+			trigger: '.gallery__number',
+			start: '-200',
+			end: '100',
+			scrub: true
+		}
+	})
+
+	gsap.fromTo('.home-page__main-gallery .rooms__number', { y: 0 }, {
+		y: 50,
+		scrollTrigger: {
+			trigger: '.rooms__number',
+			start: '-200',
+			end: '100',
+			scrub: true
+		}
+	})
+
+
+	gsap.fromTo('.home-page__special-offers .special-offers__number', { y: 0 }, {
+		y: 50,
+		scrollTrigger: {
+			trigger: '.special-offers__number',
+			start: '-200',
+			end: '100',
+			scrub: true
+		}
+	})
+
+	// gsap.fromTo('.basic-information__location .img-wrapper__img-number', { y: 0 }, {
+	// 	y: 50,
+	// 	scrollTrigger: {
+	// 		trigger: '.basic-information__location .img-wrapper__img-number',
+	// 		start: '-200',
+	// 		end: '100',
+	// 		scrub: true
+	// 	}
 	// })
 
-	// let itemsR = gsap.utils.toArray('.gallery__right .gallery__item')
+	gsap.fromTo('.basic-information__location .location__content', { y: 0 }, {
+		y: -40,
+		scrollTrigger: {
+			trigger: '.basic-information__location .location__content',
+			start: '-150',
+			end: '100',
+			scrub: true
+		}
+	})
 
-	// itemsR.forEach(item => {
-	// 	gsap.fromTo(item, { opacity: 0, x: 50 }, {
-	// 		opacity: 1, x: 0,
-	// 		scrollTrigger: {
-	// 			trigger: item,
-	// 			start: '-750',
-	// 			end: 'top',
-	// 			scrub: true
-	// 		}
-	// 	})
+	gsap.fromTo('.basic-information__location .img-wrapper__img-item', { y: 0 }, {
+		y: 20,
+		scrollTrigger: {
+			trigger: '.basic-information__location .img-wrapper__img-item',
+			start: '-150',
+			end: '100',
+			duration: .2,
+			scrub: true
+		}
+	})
+
+	// gsap.fromTo('.basic-information__concept .img-wrapper__img-number', { y: 0 }, {
+	// 	y: 50,
+	// 	scrollTrigger: {
+	// 		trigger: '.basic-information__concept .img-wrapper__img-number',
+	// 		start: '-200',
+	// 		end: '100',
+	// 		scrub: true
+	// 	}
 	// })
+
+	gsap.fromTo('.basic-information__concept .concept__content', { y: 0 }, {
+		y: -40,
+		scrollTrigger: {
+			trigger: '.basic-information__concept .concept__content',
+			start: '-150',
+			end: '100',
+			scrub: true
+		}
+	})
+
+	gsap.fromTo('.basic-information__concept .img-wrapper__img-item', { y: 0 }, {
+		y: 20,
+		scrollTrigger: {
+			trigger: '.basic-information__concept .img-wrapper__img-item',
+			start: '-150',
+			end: '100',
+			duration: .2,
+			scrub: true
+		}
+	})
+	
 
 }

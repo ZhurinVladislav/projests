@@ -10,15 +10,17 @@ html
 *::after
   box-sizing: inherit
 
-.parallax
-  background-attachment: fixed
-  background-position: center
-  background-repeat: no-repeat
-  background-size: cover
-  height: 100vh
-  position: relative
 
-      
+@keyframes animate
+  100%
+    width: 580px
+    height: 580px
+    // transform: translateX(20px)
+
+  0%
+    width: 340px
+    height: 340px
+
 body
   position: relative
   margin: 0
@@ -40,11 +42,10 @@ body
 
   &::-webkit-scrollbar
     width: 16px
-    background-color: $color__2
-
+    background-color: $color__3
 
   &::-webkit-scrollbar-thumb
-    background-color: $color__3
+    background-color: $color__2
 
 html.menu-open,
 body.menu-open
@@ -65,7 +66,6 @@ header,section,footer
   width: 100%
 
 img
-  width: auto
   max-width: 100%
 
 svg
@@ -143,7 +143,7 @@ input[type='number']
     font-size: 40px
 
   +phone
-    font-size: 23px
+    font-size: 35px
 
 .header_2
   @include titleReset
@@ -198,7 +198,7 @@ input[type='number']
   color: $color__1
   border: 1px solid $color__1
   background-color: transparent
-  transition: background-color .2s linear, border-color .2s linear
+  transition: background-color .2s linear, border-color .2s linear, color .2s linear
 
   &:hover
     background-color: $color__2
@@ -273,7 +273,7 @@ input[type='number']
 .form-item
   position: relative
   width: 100%
-  margin-bottom: 14px
+  // margin-bottom: 14px
 
   +small
     margin-bottom: 0
@@ -286,13 +286,19 @@ input[type='number']
     input
       border: 1px solid red
 
+  &__button
+    &:hover
+      border-color: $color__3
+      background-color: $color__3
+      color: $color__2
+
   input
     padding: 0px 20px
     width: 100%
     height: 51px
     border: none
     outline: none
-    background-color: $color__1
+    background-color: $color__3
     border: 2px solid transparent
     font-weight: 700
     font-size: 16px
@@ -464,7 +470,7 @@ input[type='number']
 
     li:not(:last-child)
       margin-bottom: 10px
-  
+
   blockquote
     margin: 0
     margin-bottom: 20px
@@ -474,53 +480,84 @@ input[type='number']
     ul
       margin-bottom: 0
 
+    p
+      margin: 0
+
   h1
-    @include textReset
-    display: block
-    margin-bottom: 30px
-    font-family: $font-family__1
+    @include titleReset
+    font-family: $font-family__2
+    font-weight: 700
     font-size: 60px
-    font-weight: 600
-    line-height: 1.2
+    line-height: 1.3
     color: $color__2
+    text-transform: uppercase
 
     +medium
-      font-size: 50px
+      font-size: 45px
 
     +small
       font-size: 40px
 
     +phone
-      font-size: 36px
+      font-size: 30px
 
   h2
-    @include textReset
-    display: block
-    margin-bottom: 30px
-    font-family: $font-family__1
+    @include titleReset
+    font-family: $font-family__2
+    margin-bottom: 20px
+    font-weight: 700
     font-size: 40px
-    font-weight: 600
     line-height: 1.2
     color: $color__2
+    text-transform: uppercase
 
     +medium
       font-size: 34px
 
     +small
+      margin-bottom: 25px
       font-size: 30px
 
     +phone
+      margin-bottom: 15px
       font-size: 26px
 
   h3
-    @include textReset
-    display: block
-    margin-bottom: 30px
-    font-family: $font-family__1
-    font-size: 40px
-    font-weight: 600
-    line-height: 1.2
+    @include titleReset
+    font-family: $font-family__2
+    margin-bottom: 20px
+    font-size: 30px
+    font-weight: 300
+    line-height: 1.3
     color: $color__2
+    text-transform: uppercase
+
+    +medium
+      font-size: 24px
+
+    +small
+      margin-bottom: 25px
+
+    +phone
+      margin-bottom: 15px
+
+  h4
+    @include titleReset
+    font-family: $font-family__2
+    font-size: 20px
+    font-weight: 300
+    line-height: 1.3
+    color: $color__2
+    text-transform: uppercase
+
+    +medium
+      font-size: 24px
+
+    +small
+      margin-bottom: 25px
+      
+    +phone
+      margin-bottom: 15px
 
   table
     width: 100%
@@ -653,7 +690,7 @@ input[type='number']
 .soc-panel
   position: fixed
   z-index: 100
-  bottom: 29vh
+  bottom: 30vh
   right: 0
   display: flex
   flex-direction: column
@@ -668,8 +705,8 @@ input[type='number']
     bottom: 9vh
 
   +phone
-    max-width: 40px
-    min-width: 40px
+    max-width: 50px
+    min-width: 50px
     min-height: 175px
 
   &__item
@@ -708,25 +745,23 @@ input[type='number']
   display: block
   width: 50px
   height: 50px
-  background-color: $color__2
-  border: 2px solid $color__3
+  background-color: $color__3
   transform: translateY(76px)
-  transition: background-color .2s ease-in-out, transform .2s ease-in-out
+  transition: border-color .2s linear, background-color .2s linear, transform .2s linear
 
   &.active
     transform: translateY(0px)
 
   &:hover
     transform: translateY(-3px)
-    background-color: $color__3
 
     svg
-      fill: $color__1
+      fill: $color__4
 
   svg
     display: inline-flex
     width: 25px
-    fill: $color__3
+    fill: $color__2
     transform: rotate(180deg)
     transition: fill .2s ease-in-out
         

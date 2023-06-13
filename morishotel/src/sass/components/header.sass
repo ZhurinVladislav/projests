@@ -2,6 +2,9 @@
   margin-bottom: 40px
   background-color: rgba($color__2, .9)
 
+  +phone
+    margin-bottom: 15px
+
   .svg-reset
     flex-shrink: 0
     margin-right: 5px
@@ -299,14 +302,21 @@
           color: $color__2
           background-color: $color__1
           font-size: 18px
-          > &__item
-              padding-top: 11px
+          > .menu__item
+              // padding-top: 11px
               padding-bottom: 11px
               text-align: start
+              font-size: 16px
+
+              &::after
+                display: none
 
               &:last-child
                 margin-bottom: 0
                 padding-bottom: 0
+
+              &.active
+                color: $color__4
 
               > a
                   font-weight: 500
