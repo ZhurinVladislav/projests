@@ -23,6 +23,7 @@ $(function(){
         variableWidth: true,
         swipe: true,
         cssEase: "linear",
+        waitForAnimate: false,
         prevArrow: '.gallery__slider-wrapper .arrow-wrapper__left',
         nextArrow: '.gallery__slider-wrapper .arrow-wrapper__right',
         responsive: [
