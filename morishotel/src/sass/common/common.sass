@@ -23,10 +23,13 @@ html
 
 body
   position: relative
+  display: flex
+  flex-direction: column
   margin: 0
   width: 100%
   max-width: 100%
   min-width: 320px
+  min-height: 100vh
   overflow-x: hidden
   font-family: $font-family__1
   font-weight: 400
@@ -446,6 +449,12 @@ input[type='number']
     &:hover
       text-decoration: none
 
+  img
+    +phone
+      width: 100%
+      margin: 0!important
+      margin-bottom: 15px!important
+
   ul
     margin-bottom: 20px
     padding-left: 42px
@@ -736,6 +745,21 @@ input[type='number']
 
   .vk
     width: 26px
+
+  .wa
+    margin-bottom: 0
+
+    +small
+      margin-bottom: 20px
+
+    +phone
+      margin-bottom: 10px
+
+  .phone
+    display: none
+
+    +small
+      display: block
 
 .scroll-top
   position: fixed

@@ -1,9 +1,30 @@
 .header
-  margin-bottom: 40px
+  position: relative
+  margin-bottom: 60px
   background-color: rgba($color__2, .9)
 
-  +phone
-    margin-bottom: 15px
+  .header-bottom
+    border-bottom: $color__0
+
+  .menu__item.active .menu__link-item
+    color: $color__4
+
+    &::after
+      content: ''
+      position: absolute
+      bottom: -33px
+      left: 0
+      height: 2px
+      width: 100%
+      background-color: $color__0
+      opacity: 0
+      transition: opacity .2s ease-in-out
+
+  .menu__item:hover.menu__item::after
+    opacity: 0
+
+  +small
+    margin-bottom: 50px
 
   .svg-reset
     flex-shrink: 0
@@ -20,6 +41,22 @@
 
 .home-page .header-bottom
   margin-bottom: 79px
+
+  .menu__item:hover.menu__item::after
+    opacity: 1
+
+  .menu__item.active .menu__link-item
+
+    &::after
+      content: ''
+      position: absolute
+      bottom: -33px
+      left: 0
+      height: 2px
+      width: 100%
+      background-color: $color__4
+      opacity: 1
+      transition: opacity .2s ease-in-out
 
 .home-page .header-bottom
   border-bottom: 2px solid $color__1
@@ -207,22 +244,8 @@
     &__item:hover .menu__link-item
       color: $color__4
 
-    &__item:hover.menu__item::after
-      opacity: 1
-
     &__item.active .menu__link-item
       color: $color__4
-
-      &::after
-        content: ''
-        position: absolute
-        bottom: -33px
-        left: 0
-        height: 2px
-        width: 100%
-        background-color: $color__4
-        opacity: 1
-        transition: opacity .2s ease-in-out
 
     .parent
       .menu__link
@@ -303,7 +326,6 @@
           background-color: $color__1
           font-size: 18px
           > .menu__item
-              // padding-top: 11px
               padding-bottom: 11px
               text-align: start
               font-size: 16px
