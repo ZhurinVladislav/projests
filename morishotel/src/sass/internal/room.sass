@@ -56,7 +56,7 @@
     .content-middle
       display: flex
       justify-content: space-around
-      padding: 20px
+      padding: 30px
       margin-bottom: 80px
       box-shadow: 1px 4px 23px 4px rgba(57, 57, 57, .17)
 
@@ -65,6 +65,7 @@
 
       +phone
         flex-wrap: wrap
+        padding: 20px
 
       .item
 
@@ -84,7 +85,7 @@
           font-size: 25px
           font-weight: 700
           color: $color__4
-          margin-bottom: 15px
+          // margin-bottom: 15px
 
           +phone
             font-size: 20px
@@ -213,6 +214,10 @@
           .slick-slide
             min-height: 1px
             height: 100%
+            max-height: 480px
+
+            +phone
+              max-height: 300px
 
           .slick-slide > div
               padding: 0 1px

@@ -5,98 +5,98 @@
 // End
 
 // gallery
-$(function(){
-    const status = $('.arrow-wrapper__pagination');
-    const slickElement = $('.gallery .slider');
-    slickElement.on('init reInit afterChange', function(event, slick, currentSlide, nextSlide){
-        let i = (currentSlide ? currentSlide : 0) + 1;
-        status.text(i + '/' + slick.slideCount);
-    });
+// $(function(){
+//     const status = $('.arrow-wrapper__pagination');
+//     const slickElement = $('.gallery .slider');
+//     slickElement.on('init reInit afterChange', function(event, slick, currentSlide, nextSlide){
+//         let i = (currentSlide ? currentSlide : 0) + 1;
+//         status.text(i + '/' + slick.slideCount);
+//     });
 
-    $('.gallery .slider').slick({
-        useTransform: true,
-        lazyLoad: "ondemand",
-        infinite: true,
-        speed: 600,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        variableWidth: true,
-        swipe: true,
-        cssEase: "linear",
-        prevArrow: '.gallery__slider-wrapper .arrow-wrapper__left',
-        nextArrow: '.gallery__slider-wrapper .arrow-wrapper__right',
-        responsive: [
-            {
-                breakpoint: 700,
-                settings: {
-                  variableWidth: false,
-                }
-              }
-        ]
-    });
-    // let firstSlide = $(`[data-slick-index="2"]`);
-    // firstSlide.addClass('active')
-    if(window.innerWidth >= 1438){
-        let firstSlide = $(`[data-slick-index="2"]`);
-        firstSlide.addClass('active')
-    } else if (window.innerWidth >= 700) {
-        let firstSlide = $(`[data-slick-index="1"]`);
-        firstSlide.addClass('active')
-    } else {
-        let firstSlide = $(`[data-slick-index="0"]`);
-        firstSlide.addClass('active')
-    }
+//     $('.gallery .slider').slick({
+//         useTransform: true,
+//         lazyLoad: "ondemand",
+//         infinite: true,
+//         speed: 600,
+//         slidesToShow: 1,
+//         slidesToScroll: 1,
+//         variableWidth: true,
+//         swipe: true,
+//         cssEase: "linear",
+//         prevArrow: '.gallery__slider-wrapper .arrow-wrapper__left',
+//         nextArrow: '.gallery__slider-wrapper .arrow-wrapper__right',
+//         responsive: [
+//             {
+//                 breakpoint: 700,
+//                 settings: {
+//                   variableWidth: false,
+//                 }
+//               }
+//         ]
+//     });
+//     // let firstSlide = $(`[data-slick-index="2"]`);
+//     // firstSlide.addClass('active')
+//     if(window.innerWidth >= 1438){
+//         let firstSlide = $(`[data-slick-index="2"]`);
+//         firstSlide.addClass('active')
+//     } else if (window.innerWidth >= 700) {
+//         let firstSlide = $(`[data-slick-index="1"]`);
+//         firstSlide.addClass('active')
+//     } else {
+//         let firstSlide = $(`[data-slick-index="0"]`);
+//         firstSlide.addClass('active')
+//     }
 
-    if(window.innerWidth >= 1438){
-        $('.gallery .slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
-            let current = currentSlide + 2;
-            let next = nextSlide + 2;
+//     if(window.innerWidth >= 1438){
+//         $('.gallery .slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+//             let current = currentSlide + 2;
+//             let next = nextSlide + 2;
 
-            // console.log(slick.slideCount);
+//             // console.log(slick.slideCount);
 
-            let sumSlide = currentSlide + 1;
+//             let sumSlide = currentSlide + 1;
 
-            let slideActive = $(`[data-slick-index="${next}"]`)
+//             let slideActive = $(`[data-slick-index="${next}"]`)
 
-            // console.log($(`[data-slick-index="${next + 1}"]`));
+//             // console.log($(`[data-slick-index="${next + 1}"]`));
 
-            if (sumSlide >= slick.slideCount) {
-                // slideActive.addClass('transformSlider');
-                console.log(nextSlide);
-            }
+//             if (sumSlide >= slick.slideCount) {
+//                 // slideActive.addClass('transformSlider');
+//                 console.log(nextSlide);
+//             }
 
-            // console.log(currentSlide);
+//             // console.log(currentSlide);
 
-            $(`[data-slick-index="${current}"]`).removeClass('active');
-            $(`[data-slick-index="${next + 2}"]`).removeClass('active');
-            $(`[data-slick-index="${next}"]`).addClass('active');
-        });
-   } else if (window.innerWidth >= 700) {
-        $('.gallery .slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
-            let current = currentSlide + 1;
-            let next = nextSlide + 1;
-            $(`[data-slick-index="${current}"]`).removeClass('active');
-            $(`[data-slick-index="${next + 1}"]`).removeClass('active');
-            $(`[data-slick-index="${next}"]`).addClass('active');
-        });
-    } else {
-        $('.gallery .slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
-            let current = currentSlide;
-            let next = nextSlide ;
-            $(`[data-slick-index="${current}"]`).removeClass('active');
-            $(`[data-slick-index="${next + 1}"]`).removeClass('active');
-            $(`[data-slick-index="${next}"]`).addClass('active');
-        });
-    }
+//             $(`[data-slick-index="${current}"]`).removeClass('active');
+//             $(`[data-slick-index="${next + 2}"]`).removeClass('active');
+//             $(`[data-slick-index="${next}"]`).addClass('active');
+//         });
+//    } else if (window.innerWidth >= 700) {
+//         $('.gallery .slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+//             let current = currentSlide + 1;
+//             let next = nextSlide + 1;
+//             $(`[data-slick-index="${current}"]`).removeClass('active');
+//             $(`[data-slick-index="${next + 1}"]`).removeClass('active');
+//             $(`[data-slick-index="${next}"]`).addClass('active');
+//         });
+//     } else {
+//         $('.gallery .slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+//             let current = currentSlide;
+//             let next = nextSlide ;
+//             $(`[data-slick-index="${current}"]`).removeClass('active');
+//             $(`[data-slick-index="${next + 1}"]`).removeClass('active');
+//             $(`[data-slick-index="${next}"]`).addClass('active');
+//         });
+//     }
 
-    // $('.gallery .slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
-    //     let current = currentSlide + 2;
-    //     let next = nextSlide + 2;
-    //     $(`[data-slick-index="${current}"]`).removeClass('active');
-    //     $(`[data-slick-index="${next + 2}"]`).removeClass('active');
-    //     $(`[data-slick-index="${next}"]`).addClass('active');
-    // });
-});
+//     // $('.gallery .slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+//     //     let current = currentSlide + 2;
+//     //     let next = nextSlide + 2;
+//     //     $(`[data-slick-index="${current}"]`).removeClass('active');
+//     //     $(`[data-slick-index="${next + 2}"]`).removeClass('active');
+//     //     $(`[data-slick-index="${next}"]`).addClass('active');
+//     // });
+// });
 
 // rooms
 $(function(){

@@ -1,9 +1,17 @@
+.home-page__footer
+  .content
+    padding-top: 20px
+
+    +small
+      padding-top: 40px
+  
 .footer
+  margin-top: auto
 
   .content
     display: flex
     justify-content: space-between
-    padding-top: 20px
+    // padding-top: 20px
     padding-bottom: 20px
     border-bottom: 1px solid $color__4
 
@@ -11,7 +19,7 @@
       flex-wrap: wrap
       justify-content: center
       align-items: center
-      padding-top: 40px
+      // padding-top: 40px
       padding-bottom: 40px
 
     .left
@@ -92,6 +100,13 @@
             fill: $color__3
 
       &__btn
+        background-color: $color__4
+        border-color: $color__4
+        color: $color__1
+
+        &:hover
+          color: $color__4
+          background-color: $color__0
         
         +medium
           padding: 23px 29px
