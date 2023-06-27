@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
       activeSlides,
       number = document.querySelector('.arrow-wrapper__pagination');
   
-  // slider.concat(arrCopy)
   const swiper = new Swiper('.swiper', {
     loop: true,
     slideActiveClass: 'slider-item--active',
@@ -18,18 +17,34 @@ document.addEventListener('DOMContentLoaded', () => {
     speed: 900,
     spaceBetween: 20,
     allowTouchMove: false,
-    // initialSlide: 3,
     slidesPerView: 1,
     centeredSlides: true,
-    // pagination: {
-    //   el: ".arrow-wrapper__pagination",
-    //   type: "fraction",
-    // },
     navigation: {
       nextEl: nextArrow,
       prevEl: prevArrow,
     },
-  
+
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+        // allowTouchMove: true,
+        centeredSlides: false,
+      },
+      // 768: {
+      //   centeredSlides: false,
+      //   slidesPerView: 2,
+      //   allowTouchMove: true,
+      // },
+      // 991: {
+      //   slidesPerView: 2,
+      //   centeredSlides: false,
+      //   allowTouchMove: true,
+      // },
+      // 3840: {
+      //   centeredSlides: true,
+      //   allowTouchMove: false,
+      // }
+    },
   });
   
   
@@ -37,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     slideSum = i + 1;
     clonedNode = arraySlide[i].cloneNode(true);
     clonedNode.setAttribute('data-swiper-slide-index', `${6 + i}`);
+    clonedNode.setAttribute('slide-index', `${i + 1}`)
     clonedNode.classList.add('copy')
     slider.prepend(clonedNode);
   }
@@ -48,13 +64,12 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < nodeList.length; i++) {    
       itemsArray.push(parent.removeChild(nodeList[i]));
     }
-    // console.log(itemsArray);
     itemsArray.sort(function(nodeA, nodeB) {
-        let textA = nodeA.getAttribute('data-swiper-slide-index');
-        let textB = nodeB.getAttribute('data-swiper-slide-index');
-        // console.log(textA);
-        let numberA = parseInt(textA);
-        let numberB = parseInt(textB);
+        let textA = nodeA.getAttribute('data-swiper-slide-index'),
+            textB = nodeB.getAttribute('data-swiper-slide-index'),
+            numberA = parseInt(textA),
+            numberB = parseInt(textB);
+
         if (numberA < numberB) {
           return -1;
         }
@@ -64,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return 0;
       })
       .forEach(function(node) {
-        // parent.append(node)
         if (node.getAttribute('data-swiper-slide-index') <= 5) {
           parent.append(node)
         } 
@@ -92,33 +106,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
   reverseArr()
 
+  for (let i = 0; i < slide.length; i++) {
+    slide[i].setAttribute('slide-index', `${i + 1}`)
+  }
 
   // Пагинация
-  // number.textContent = `1 / 6`
   function paginationCount() {
     const conutSlide = document.querySelector('.pagination__slide-count'),
           allSlide = document.querySelector('.pagination__all-slide');
-    let count = 1;
-    // number.textContent = `1 / ${slideSum}`
+
+    let count;
+    activeSlides = document.querySelector('.slider-item--active');
+  
+    if (activeSlides.classList.contains('copy')) {
+      count = 1;
+    } else {
+      count = activeSlides.getAttribute('slide-index');
+    }
+
     conutSlide.textContent = count;
     allSlide.textContent = slideSum;
-    
-    // console.log(activeSlides);
+    number.textContent = `${count} / ${slideSum}`
     nextArrow.addEventListener('click', () => {
-      // activeSlides = document.querySelector('.slider-item--active')
-      count++
+      activeSlides = document.querySelector('.slider-item--active')
+      
+      if (count === 1) {
+        count++
+      } else {
+        count = activeSlides.getAttribute('slide-index');
+      }
         
       number.textContent = `${count} / ${slideSum}`
-      for (let i = 0; i < slider.length; i++) {
-        count++
-        // conutSlide.textContent = +1
-        // const element = array[i];
-        if (slider[i].getAttribute('data-swiper-slide-index') < 6) {
-          count++
-          // count.textContent = count++
-        }
-        
-      }
+    })
+
+    prevArrow.addEventListener('click', () => {
+      activeSlides = document.querySelector('.slider-item--active')
+      count = activeSlides.getAttribute('slide-index');
+      number.textContent = `${count} / ${slideSum}`
     })
   }
   paginationCount()
