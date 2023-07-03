@@ -1,0 +1,124 @@
+.product
+  .content-top
+    display: flex
+    margin-bottom: 30px
+
+    .swiper-slide
+      max-width: 100%
+      min-height: 100%
+      font-size: 0
+      background-color: $color__4
+
+    .swiper-slide .swiper-img
+      display: block
+      max-width: 100%
+      min-height: 100%
+      object-fit: cover
+
+    .swiper-slide
+      cursor: pointer
+      user-select: none
+
+    &__slider
+      flex: 1 0 50%
+      margin-right: 20px
+      max-width: 600px
+
+    .slider
+      margin-right: 40px
+
+      .slider-top
+        margin-bottom: 20px
+        max-height: 460px
+        width: 100%
+        border-radius: 20px
+
+        &__slide
+          max-height: 460px
+          &:hover
+            .slider-top__img
+              transform: scale(1.1)
+
+        &__img
+          transition: transform .3s linear
+
+        .arrow
+          position: absolute
+          z-index: 10
+          top: 50%
+          padding: 10px
+          width: 50px
+          height: 50px
+          background-color: $color__2
+          border-radius: 10px
+          // left: 0
+          fill: $color__1
+          transform: translateY(-50%) rotate(90deg)
+          transition: background-color .2s linear
+
+          &.swiper-button-disabled
+            background-color: rgba($color__2, .5)
+            fill: rgba($color__1, .5)
+            cursor: auto
+
+            &:hover
+              background-color: rgba($color__2, .5)
+
+          &:hover
+            background-color: $color__4
+
+          &_prev
+            left: 10px
+
+          &_next
+            right: 10px
+            transform: translateY(-50%) rotate(-90deg)
+
+          // &__arrow
+          //   position: absolute
+
+      .slider-bottom
+        max-height: 20%
+        box-sizing: border-box
+        border-radius: 20px
+
+        &__slide
+          max-height: 200px
+          opacity: 0.4
+          border-radius: 20px
+          transition: opacity .3s linear
+          overflow: hidden
+
+          &__img
+            border-radius: 20px
+
+          &.swiper-slide-thumb-active
+            opacity: 1
+
+    .descr
+      flex: 1 0 50%
+      max-width: 495px
+
+      &__price
+        margin-bottom: 20px
+        font-family: $font-family__2
+        font-size: 35px
+
+      &__number
+        color: $color__3
+
+      .list
+
+        &__item
+          font-size: 18px
+
+          &:not(:last-child)
+            margin-bottom: 15px
+
+        &__point
+          font-weight: 700
+
+  .content-bottom
+
+    &__text
+      color: $color__2

@@ -4,6 +4,10 @@
 // flsFunctions.isWebp();
 // End
 
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector('body').classList.add('loading');
+}); 
+
 if(document.querySelector('.services-inner')){
     function openMenu() {
         const btn = document.querySelector('#btnMenu');
@@ -22,78 +26,6 @@ if(document.querySelector('.services-inner')){
     openMenu()
 }
 
-
-
-// if(document.querySelector('.services-inner__content')){
-    
-//     $(window).scroll(function(e) {
-//         let scroll = $(window).scrollTop();
-//         let block = $('#scroll-wrapper');
-//         let element = $('#scroll-item');
-        
-//         let corTop = block.offset().top;
-//         let corBottom = +block.innerHeight() + +corTop;
-//         let heightBlock = corBottom - corTop;
-    
-//         if(window.innerWidth > 1199){
-    
-//             if(scroll >= corTop && scroll <= corBottom - 450) {
-//                 element.css("transform", `translateY(${(scroll - corTop + 20)}px)`)
-//             }
-        
-//         }
-//     })
-// }
-
-
-
-
-$('.gallery-slider .slider').slick({
-    lazyLoad: "ondemand",
-    speed: 600,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    swipe: true,
-    rows: 2,
-    cssEase: "linear",
-    prevArrow: false,
-    nextArrow: false,
-    responsive: [
-        {
-            breakpoint: 1360,
-            settings: {
-                prevArrow: '.gallery-slider__left-arrow',
-                nextArrow: '.gallery-slider__right-arrow',
-                slidesToShow: 3,
-            }
-        },
-        {
-          breakpoint: 992,
-          settings: {
-            prevArrow: '.gallery-slider__left-arrow',
-            nextArrow: '.gallery-slider__right-arrow',
-            slidesToShow: 2,
-          }
-        },
-        {
-            breakpoint: 645,
-            settings: {
-                prevArrow: '.gallery-slider__left-arrow',
-                nextArrow: '.gallery-slider__right-arrow',
-                slidesToShow: 1,
-                rows: 1,
-            },
-        }
-    ]
-});
-
-// Табы на страницы товара мобильная версия
-$('.list__link-arrow-mob').on('click', function(){
-    let $this = $(this);
-    $this.toggleClass('active-mob');
-    $this.parents('.content__list .list__item').find('.list-inner').toggleClass('active');
-});
-
 // Стрелка прокрутка на вверх
 $(function(){
     //Стрелка прокрутка на вверх
@@ -110,23 +42,6 @@ $(function(){
     });
 });
 
-// Скрывем всплывающие меню, если не li
-$(function(){
-    let list = Array.from($('.list-inner'));
-
-    for (let i = 0; i < list.length; i++) {
-        if (list[i].firstElementChild === null) {
-            list[i].className = 'list__inner list-inner none'
-        }
-    }
-
-    // Удаление стрелки
-    let none = $('.none')
-    // none.prev().prev().find('.list__link-arrow').css('display', 'none')
-    none.prev().css('display', 'none');
-});
-
-
 // Мобильное меню
 $(function(){
     let menuToggle = $('.menu__toggle');
@@ -139,7 +54,6 @@ $(function(){
     menuToggle.on('click', function(){
         menuToggle.toggleClass('active');
         $('html,body').toggleClass('menu-open');
-        //header.toggleClass("menu-open");
         
         if(flag){
             menu.removeClass("active");
@@ -169,24 +83,13 @@ $(function(){
         flag = false
     })
 
-
-    // $('.menu-mobile .menu-item.parent .arrow-list-mob').on('click',function(){
-    //     let $this = $(this);
-    //     $this.next('ul').toggleClass('display')
-    //     // $this.parents('.menu-item').children('.menu-list__inner').toggleClass('active')
-    // })
-
     $('.menu-mobile .menu-item.parent .menu-link').on('click',function(){
         let $this = $(this);
         $this.next().next('ul').toggleClass('display');
-        // $this.parents('.menu-item').children('.menu-list__inner').toggleClass('active')
     })
 
     $('.menu-mobile .menu-item.parent .menu-list__inner .menu-item.parent .arrow-list-mob').on('click',function(){
         let $this = $(this);
-        console.log($this);
-        // $this.next('ul').toggleClass('open')
-        // $this.parents('.menu-item').toggleClass('active')
         $this.next('ul').toggleClass('open')
     })
 
@@ -196,15 +99,15 @@ $(function(){
 $('.main').lightGallery({
   thumbnail: false,
   share: false,
-  selector: '.gallery-item a',
+  selector: '.gallery__item .gallery__link',
   getCaptionFromTitleOrAlt: false
 });
 
 /// Подключаем всплывающую галерею на главной странице
-$('.gallery').lightGallery({
+$('.services-inner').lightGallery({
     thumbnail: false,
     share: false,
-    selector: '.slider__slide a',
+    selector: '.gallery__item .gallery__link',
     getCaptionFromTitleOrAlt: false
   });
   
@@ -296,12 +199,3 @@ $(function(){
       }
   })
 }());
-
-// (() => {
-//     const listItem = document.querySelector('.list-inner__item.active'),
-//           listParent = listItem.closest('.list__inner'),
-//           listArrow = listParent.previousElementSibling;
-          
-//     listParent.classList.add('active');
-//     listArrow.classList.toggle('active-mob');
-// })();
